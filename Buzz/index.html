@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<script type="text/javascript" src="buzz.js"></script>
+		<script type="text/javascript">
+			var musique = new buzz.sound("musique", {formats: ["wav"]});
+			setInterval(function(){
+				var musicState = document.getElementById("musicState");
+				musicState.innerHTML = "Musique en pause: ";
+				if (musique.isPaused())
+					musicState.innerHTML += "oui";
+				else
+					musicState.innerHTML += "non";
+				musicState.innerHTML += ".<br />La musique a fini de jouer: ";
+				if (musique.isEnded())
+					musicState.innerHTML += "oui";
+				else
+					musicState.innerHTML += "non";
+				musicState.innerHTML += ".<br />La musique est en sourdine: ";
+				if (musique.isMuted())
+					musicState.innerHTML += "oui";
+				else
+					musicState.innerHTML += "non";
+				musicState.innerHTML += ".<br />Pourcentage joué: " + musique.getPercent() + "%";
+				musicState.innerHTML += ".<br />Portion jouée: <span style=\"background: #DDDDDD; display: inline-block; width: 150px;\"><span style=\"background: #00AD5A; display: inline-block; width: " + Math.round(musique.getPercent()*1.5) + "px;\">Played</span></span>";
+				musicState.innerHTML += "<br />Durée de la musique: " + musique.getDuration() + "s.";
+			}, 50);
+		</script>
+		<title>Exercice 1: JavaScript</title>
+	</head>
+	<body>
+		<p id="musicState"></p>
+		<p>
+			<input type="button" value="Play" onclick="javascript:musique.play();"/> - <input type="button" value="Pause" onclick="javascript:musique.pause();"/> - <input type="button" value="Stop" onclick="javascript:musique.stop();"/>
+		</p>
+		<p>
+			<input type="button" value="Toggle Play" onclick="javascript:musique.togglePlay();"/>
+		</p>
+		<p>
+			<input type="button" value="Fade In" onclick="javascript:musique.fadeIn();"/>
+		</p>
+		<p>
+			<input type="button" value="Loop" onclick="javascript:musique.loop();"/> - <input type="button" value="Unloop" onclick="javascript:musique.unloop();"/>
+		</p>
+		<p>
+			<input type="button" value="Mute" onclick="javascript:musique.mute();"/> - <input type="button" value="Unmute" onclick="javascript:musique.unmute();"/>
+		</p>
+		<p>
+			<input type="button" value="Toggle Mute" onclick="javascript:musique.toggleMute();"/>
+		</p>
+	</body>
+</html>

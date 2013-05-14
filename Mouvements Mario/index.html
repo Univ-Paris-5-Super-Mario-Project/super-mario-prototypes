@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Test d&eacuteplacements</title>
+		<script type="text/javascript" src="JSGlib-min.js"></script>
+        <script type="text/javascript" src="buzz.js"></script>
+		<script type="text/javascript" src="Mario.class.js"></script>
+		<script type="text/javascript">
+			window.onload=function()
+			{
+				Game.setRooms([new Room(592,400)]);
+                Game.gameStart=function()
+                {
+                    Game.instanceCreate(280,192,Mario);
+                };
+				Game.loadAndRun('jeu',
+                {
+                        'marioSpriteLeft': './Images/marioSpriteLeft.png',
+                        'marioSpriteRight': './Images/marioSpriteRight.png'
+                });
+			};
+		</script>
+	</head>
+	<body>
+		<canvas id="jeu" style="border: 3px solid #000;">
+			<b>Oh, votre navigateur n'est pas capable d'afficher le jeu...<br />
+			Avez-vous d�j� essay� <a href="http://www.mozilla.com/fr/firefox/">Mozilla
+			Firefox</a>, <a href="http://www.opera.com/">Opera</a> ou encore
+			<a href="http://www.google.com/chrome/">Google Chrome</a> ?</b>
+		</canvas>
+	</body>
+</html>
